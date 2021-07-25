@@ -5,10 +5,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class UserValidator implements WebValidator<UserSaveRequest> {
+public class ProfileValidator implements WebValidator<ProfileSaveRequest> {
 
     @Override
-    public boolean validate(final UserSaveRequest request) {
+    public boolean validate(final ProfileSaveRequest request) {
         if (!request.valid()) {
             log.debug("Validated request={}", request);
             throw new IllegalArgumentException("The request is not valid.");
