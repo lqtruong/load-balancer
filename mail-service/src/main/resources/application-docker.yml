@@ -1,0 +1,8 @@
+server:
+  port: 8582
+  servlet.context-path: /mail-service
+spring:
+  application.name: mail-service
+  data:
+    mongodb:
+      uri: mongodb://host.docker.internal:27017/mail-service

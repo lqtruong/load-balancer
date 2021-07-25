@@ -1,0 +1,17 @@
+# Check Macos ports that are currently listening:
+    `sudo lsof -i -P | grep LISTEN`
+
+# Stop localhost mysql first
+Go to Macos Preferences -> Bottom left, stop MYSQL service
+
+# Start Docker mysql
+    `docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456@A -d mysql:8.0.26`
+
+# Execute Query on MySQL container
+    - `docker exec it <mysql container> /bin/sh`
+    - Connect to mysql by Terminal: `mysql -u root -p`, enter password and go!
+
+# Connect from localhost to mysql
+    - Use Mysql Client tool, like DBeaver
+    - Set variable `allowPublicKeyRetrieval=true`
+    - localhost:3306 test connection
