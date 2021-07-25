@@ -10,3 +10,10 @@ spring:
     password: 123456@A
   jpa:
     show-sql: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka_server_url:http://host.docker.internal:8761}/eureka/
+  instance:
+    statusPageUrl: http://localhost:8581/client-profile/actuator/health
