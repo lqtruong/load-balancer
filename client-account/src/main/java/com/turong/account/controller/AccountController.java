@@ -23,10 +23,9 @@ public class AccountController {
     private AccountConvert accountConvert;
 
     @GetMapping("/{id}")
-    public ResponseEntity<AccountResponse> getUAccount(
-            @RequestHeader("x-tenant-id") final String tenant, @PathVariable final String id) {
-        log.debug("Get account with id={}, tenant={}", id, tenant);
-        return ResponseEntity.ok(accountService.getAccount(id));
+    public ResponseEntity<AccountResponse> getAccount(@PathVariable final String id) {
+        log.debug("Get account with id={}, tenant={}", id);
+        return ResponseEntity.ok(accountConvert.toResponse(accountService.getAccount(id)));
 
     }
 
@@ -51,5 +50,12 @@ public class AccountController {
             throw new IllegalArgumentException("Id to delete must be present!");
         }
         accountService.deleteById(id);
+    }
+
+    @GetMapping("/email")
+    public ResponseEntity<AccountResponse> getAccountByEmail(@RequestParam final String email) {
+        log.debug("Get account with email={}, tenant={}", email);
+        return ResponseEntity.ok(accountConvert.toResponse(accountService.getAccountByEmail(email)));
+
     }
 }
