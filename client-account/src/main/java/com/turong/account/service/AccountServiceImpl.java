@@ -1,6 +1,5 @@
 package com.turong.account.service;
 
-import com.turong.account.controller.AccountResponse;
 import com.turong.account.entity.Account;
 import com.turong.account.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +17,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountResponse getAccount(String id) {
+    public Account getAccount(String id) {
         Optional<Account> account = accountMapper.findAccount(id);
         if (!account.isPresent()) {
             return null;
         }
-        Account foundAccount = account.get();
-        return AccountResponse.builder()
-                .id(foundAccount.getId())
-                .fullname(foundAccount.getFullname())
-                .email(foundAccount.getEmail())
-                .dob(foundAccount.getDob())
-                .build();
+        return account.get();
     }
 
     @Override
@@ -38,7 +31,11 @@ public class AccountServiceImpl implements AccountService {
         if (count == 0) {
             return null;
         }
-        return accountMapper.findAccountByEmail(accountToCreate.getEmail()).orElseThrow(IllegalArgumentException::new);
+        Optional<Account> account = accountMapper.findAccountByEmail(accountToCreate.getEmail());
+        if (!account.isPresent()) {
+            return null;
+        }
+        return account.get();
     }
 
     @Override
@@ -49,6 +46,15 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public int deleteById(String id) {
         return accountMapper.deleteById(id);
+    }
+
+    @Override
+    public Account getAccountByEmail(String email) {
+        Optional<Account> account = accountMapper.findAccountByEmail(email);
+        if (!account.isPresent()) {
+            return null;
+        }
+        return account.get();
     }
 
 }
