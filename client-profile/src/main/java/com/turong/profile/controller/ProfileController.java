@@ -23,9 +23,8 @@ public class ProfileController {
     private ProfileConvert profileConvert;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProfileResponse> getProfile(
-            @RequestHeader("x-tenant-id") final String tenant, @PathVariable final String id) {
-        log.debug("Get Profile with id={}, tenant={}", id, tenant);
+    public ResponseEntity<ProfileResponse> getProfile(@PathVariable final String id) {
+        log.debug("Get Profile with id={}", id);
         return ResponseEntity.ok(profileService.getProfile(id));
 
     }
