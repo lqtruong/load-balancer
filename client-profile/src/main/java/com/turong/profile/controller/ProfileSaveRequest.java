@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ToString
-public class UserSaveRequest implements WebRequest {
+public class ProfileSaveRequest implements WebRequest {
 
 
     @Override

@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "profiles")
-public class User {
+public class Profile {
 
     @Id
     private Long id;
