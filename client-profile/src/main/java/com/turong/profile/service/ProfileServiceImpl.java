@@ -5,6 +5,7 @@ import com.turong.profile.entity.Profile;
 import com.turong.profile.feign.account.AccountClient;
 import com.turong.profile.feign.account.AccountResponse;
 import com.turong.profile.mapper.ProfileMapper;
+import com.turong.profile.service.kafka.KafkaMessageSender;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,11 +21,15 @@ public class ProfileServiceImpl implements ProfileService {
 
     private final AccountClient accountClient;
 
+    private final KafkaMessageSender kafkaSender;
+
     public ProfileServiceImpl(
             @Autowired final ProfileMapper profileMapper,
-            @Autowired final AccountClient accountClient) {
+            @Autowired final AccountClient accountClient,
+            @Autowired final KafkaMessageSender kafkaSender) {
         this.profileMapper = profileMapper;
         this.accountClient = accountClient;
+        this.kafkaSender = kafkaSender;
     }
 
     @Override
@@ -59,7 +64,11 @@ public class ProfileServiceImpl implements ProfileService {
         if (!profile.isPresent()) {
             return null;
         }
-        return profile.get();
+        Profile foundProfile = profile.get();
+        // send mail to kafka
+        log.info("Sending profile={} to kafka for sending mail", foundProfile);
+        kafkaSender.send("cloudufo-tr-message-sendmail", foundProfile);
+        return foundProfile;
     }
 
     @Override

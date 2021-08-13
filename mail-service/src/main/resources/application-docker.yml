@@ -6,3 +6,16 @@ spring:
   data:
     mongodb:
       uri: mongodb://host.docker.internal:27017/mail-service
+  kafka:
+    bootstrapServers: ${kafka_server_url:http://kafka:9092}
+    consumer:
+      bootstrap-servers: ${kafka_server_url:http://host.docker.internal:9092}
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka_server_url:http://host.docker.internal:8761}/eureka/
+  instance:
+    statusPageUrl: http://localhost:8582/mail-service/actuator/health

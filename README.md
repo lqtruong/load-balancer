@@ -5,6 +5,14 @@ A service to start the server for Microservice Registration and Discovery with S
 
 `http://localhost:8761/`
 
+## kafka-docker
+A service to start the server for Kafka async event
+`http://localhost:9092/`
+
+## mysql-docker
+A service to start the server for Mysql Database
+`http://localhost:3306/`
+
 ## client-account
 A client account service for the user account for all apps like CRM
 `http://localhost:8580/`

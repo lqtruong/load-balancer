@@ -10,6 +10,12 @@ spring:
     password: 123456@A
   jpa:
     show-sql: true
+  kafka:
+#    bootstrapServers: ${kafka_server_url:http://host.docker.internal:9092}
+    producer:
+      bootstrap-servers: ${kafka_server_url:http://host.docker.internal:9092}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 eureka:
   client:

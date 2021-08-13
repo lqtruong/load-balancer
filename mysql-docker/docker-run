@@ -15,3 +15,8 @@ Go to Macos Preferences -> Bottom left, stop MYSQL service
     - Use Mysql Client tool, like DBeaver
     - Set variable `allowPublicKeyRetrieval=true`
     - localhost:3306 test connection
+
+# Prepare scripts for Loadbalancing project
+    - create database if not exists `loadbalancing`
+    - use `loadbalancing`
+    - Run 2 scripts file `client-account.init.sql` and `client-profile.init.sql`

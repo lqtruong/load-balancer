@@ -29,4 +29,9 @@ public class MailController {
                 mailingService.insert(mailRequest.getFrom(), mailRequest.getTo(), mailRequest.getBody())));
     }
 
+    @GetMapping
+    public ResponseEntity<String> hello() {
+        return ResponseEntity.ok("Hello!");
+    }
+
 }
