@@ -1,0 +1,51 @@
+server:
+  port: 8888
+
+management:
+  endpoints:
+    web:
+      base-path: "/admin"
+      exposure:
+        include: "*"
+  endpoint:
+    env:
+      post:
+        enabled: true
+
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
+
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+#        git:
+#          uri: https://github.com/lqtruong/config-repo
+#          clone-on-start: true
+#          basedir: target/config
+#          default-label: main
+        native:
+          search-locations: classpath:/config
+  security:
+    user:
+      name: Vza4TneZrMuJcUgj
+      password: nWV=JE<tR8SC/Dzuc"QHN7KnUZZ8w/Ym
+
+---
+spring:
+  profiles: docker
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka_server_url:http://host.docker.internal:8761}/eureka/
+  instance:
+    statusPageUrl: http://localhost:8581/client-profile/actuator/health
