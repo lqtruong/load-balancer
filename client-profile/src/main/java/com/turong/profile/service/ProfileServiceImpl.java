@@ -67,7 +67,7 @@ public class ProfileServiceImpl implements ProfileService {
         Profile foundProfile = profile.get();
         // send mail to kafka
         log.info("Sending profile={} to kafka for sending mail", foundProfile);
-        kafkaSender.send("cloudufo-tr-message-sendmail", foundProfile);
+        kafkaSender.send("profile-creation-sendmail", foundProfile);
         return foundProfile;
     }
 

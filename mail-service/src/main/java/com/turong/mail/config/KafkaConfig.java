@@ -46,6 +46,7 @@ public class KafkaConfig {
         stringObjectMap.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, 30000);
         stringObjectMap.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         stringObjectMap.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        stringObjectMap.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
         stringObjectMap.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return stringObjectMap;
     }

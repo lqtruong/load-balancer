@@ -7,7 +7,7 @@ spring:
     mongodb:
       uri: mongodb://host.docker.internal:27017/mail-service
   kafka:
-    bootstrapServers: ${kafka_server_url:http://kafka:9092}
+    # bootstrapServers: ${kafka_server_url:http://host.docker.internal:9092}
     consumer:
       bootstrap-servers: ${kafka_server_url:http://host.docker.internal:9092}
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer

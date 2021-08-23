@@ -1,5 +1,11 @@
 # Check Macos ports that are currently listening:
     `sudo lsof -i -P | grep LISTEN`
+    `ps aux` (MacOS)
+    `ps aux | grep mysql`
+    `ps aux | grep 3306`
+
+# Kill process if running
+    `kill -9 <process id>` (MacOS) or `sudo kill <process id>` (Linux)`
 
 # Stop localhost mysql first
 Go to Macos Preferences -> Bottom left, stop MYSQL service
@@ -20,3 +26,4 @@ Go to Macos Preferences -> Bottom left, stop MYSQL service
     - create database if not exists `loadbalancing`
     - use `loadbalancing`
     - Run 2 scripts file `client-account.init.sql` and `client-profile.init.sql`
+

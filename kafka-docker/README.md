@@ -5,5 +5,5 @@
 # Access kafka
 Open Kafka container terminal 
 - `cd opt/bitnami/kafka/bin`
-- `sh kafka-topics.sh --list --zookeeper zookeeper:2181`
+- `sh kafka-topics.sh --list --bootstrap-server=localhost:9092`  
 - `sh kafka-topics.sh --topic demo_topic --create --partitions 3 --replication-factor 1 --zookeeper localhost:2181`
