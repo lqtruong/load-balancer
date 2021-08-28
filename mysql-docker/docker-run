@@ -5,7 +5,8 @@
     `ps aux | grep 3306`
 
 # Kill process if running
-    `kill -9 <process id>` (MacOS) or `sudo kill <process id>` (Linux)`
+    `sudo kill -9 <process id>` (MacOS) or `sudo kill <process id>` (Linux)`
+    `and close all current mysql connection, from client tool such as DBeaver`
 
 # Stop localhost mysql first
 Go to Macos Preferences -> Bottom left, stop MYSQL service
