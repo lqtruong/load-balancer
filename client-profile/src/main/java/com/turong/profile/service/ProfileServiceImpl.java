@@ -66,7 +66,7 @@ public class ProfileServiceImpl implements ProfileService {
         }
         Profile foundProfile = profile.get();
         // send mail to kafka
-        log.info("Sending profile={} to kafka for sending mail", foundProfile);
+        log.info("Sending kafka mail to profile={}", foundProfile);
         kafkaSender.send("profile-creation-sendmail", foundProfile);
         return foundProfile;
     }

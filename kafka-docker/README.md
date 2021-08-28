@@ -1,5 +1,5 @@
 # Kafka docker
-- `docker-compose -f kafka.yml up` to start kafka at Docker
+- `docker-compose -f kafka-{bitnami|wurstmeister}.yml up` to start kafka at Docker
 - `kafka-topics.sh --list --zookeeper zookeeper:2181` to list all kafka topics
 
 # Access kafka
